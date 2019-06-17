@@ -1,0 +1,180 @@
+﻿@model KenTummersVerzamelingen2.ViewModels.ViewModel
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Categorieën vissen</h2>
+
+<p>
+    @{
+        if (User.Identity.GetUserName() == "ken.tummers@hotmail.nl" || User.Identity.GetUserName() == "Admin@admin.com")
+        {
+            @Html.ActionLink("Nieuwe categorie vis", "Create")
+        }
+    }
+</p>
+
+
+<table class="table">
+    <tr>
+        <th>Name</th>
+        <th>Categorie</th>
+        <th>Status</th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model.parentFish)
+    {
+        string selectedRow = "";
+        if (item.ID == ViewBag.ParentID)
+        {
+            selectedRow = "success";
+        }
+        <tr class="@selectedRow">
+            <td>
+                @Html.DisplayFor(modelItem => item.Name)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.ActionLink("Select", "Index", new { id = item.ID }) |
+                @{
+                    if (User.Identity.GetUserName() == "ken.tummers@hotmail.nl" || User.Identity.GetUserName() == "Admin@admin.com")
+                    {
+                        @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                        <text>|</text>
+                    }
+                }
+                @{
+                    if (User.Identity.GetUserName() == "Admin@admin.com")
+                    {
+                        if (item.Status == "Te akkorderen")
+                        {
+                            @Html.ActionLink("Akkorderen", "Akkorderen", new { id = item.ID })
+                            <text>|</text>
+                        }
+                    }
+                }
+                @Html.ActionLink("Details", "Details", new { id = item.ID })
+                @{
+                    if (User.Identity.GetUserName() == "ken.tummers@hotmail.nl" || User.Identity.GetUserName() == "Admin@admin.com")
+                    {
+                        <text>|</text>
+                        @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+                    }
+                }
+            </td>
+        </tr>
+    }
+
+
+</table>
+
+@if (Model.childFish == null)
+{
+    <h3>Soorten vissen</h3>
+
+    <p>
+        @{
+            if (User.Identity.GetUserName() == "ken.tummers@hotmail.nl" || User.Identity.GetUserName() == "Admin@admin.com")
+            {
+                @Html.ActionLink("Nieuwe soort vis", "Create", "ChildFish")
+            }
+        }
+    </p>
+    <p>
+        Selecteer een categorie vis in de bovenstaande tabel.
+    </p>
+}
+
+@if (Model.childFish != null)
+{
+    <h3>Soorten vissen</h3>
+
+    <p>
+        @{
+            if (User.Identity.GetUserName() == "ken.tummers@hotmail.nl" || User.Identity.GetUserName() == "Admin@admin.com")
+            {
+                @Html.ActionLink("Nieuwe soort vis", "Create", "ChildFish")
+            }
+        }
+    </p>
+
+    <table class="table">
+        <tr>
+            <th>Name</th>
+            <th>Categorie</th>
+            <th>Waarde</th>
+            <th>Prijs</th>
+            <th>Gewicht</th>
+            <th>Kleur</th>
+            <th>Lengte</th>
+            <th>Status</th>
+        </tr>
+
+        @foreach (var item in Model.childFish)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Categorie)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Waarde)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Prijs)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Gewicht)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Kleur)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Lengte)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @{
+                        if (User.Identity.GetUserName() == "ken.tummers@hotmail.nl" || User.Identity.GetUserName() == "Admin@admin.com")
+                        {
+                            @Html.ActionLink("Edit", "../ChildFish/Edit", new { id = item.ID })
+                            <text>|</text>
+                        }
+                    }
+                    @{
+                        if (User.Identity.GetUserName() == "Admin@admin.com")
+                        {
+                            if (item.Status == "Te akkorderen")
+                            {
+                                @Html.ActionLink("Akkorderen", "../ChildFish/Akkorderen", new { id = item.ID })
+                                <text>|</text>
+                            }
+                        }
+                    }
+                    @Html.ActionLink("Details", "Details", "ChildFish", new { id = item.ID }, null)
+                    @{
+                        if (User.Identity.GetUserName() == "ken.tummers@hotmail.nl" || User.Identity.GetUserName() == "Admin@admin.com")
+                        {
+                            <text>|</text>
+                            @Html.ActionLink("Delete", "../ChildFish/Delete", new { id = item.ID })
+                        }
+                    }
+                </td>
+            </tr>
+        }
+
+    </table>
+}
+

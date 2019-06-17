@@ -1,0 +1,88 @@
+﻿@model IEnumerable<KenTummersVerzamelingen2.Models.ChildFish>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ParentFish.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Categorie)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Beschrijving)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Waarde)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Prijs)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Gewicht)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Kleur)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lengte)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ParentFish.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Categorie)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Beschrijving)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Waarde)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Prijs)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gewicht)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Kleur)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Lengte)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Status)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+            @Html.ActionLink("Akkorderen", "Akkorderen", new { id = item.ID }) |
+            @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+        </td>
+    </tr>
+}
+
+</table>

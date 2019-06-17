@@ -1,0 +1,117 @@
+﻿@model KenTummersVerzamelingen2.Models.ChildFish
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+@{
+    if (User.Identity.GetUserName() == "ken.tummers@hotmail.nl" || User.Identity.GetUserName() == "Admin@admin.com")
+    {
+        <h2>Delete</h2>
+
+        <h3>Are you sure you want to delete this?</h3>
+        <div>
+            <h4>ChildFish</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @Html.DisplayNameFor(model => model.ParentFish.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.ParentFish.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Name)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Categorie)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Categorie)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Beschrijving)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Beschrijving)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Waarde)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Waarde)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Prijs)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Prijs)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Gewicht)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Gewicht)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Kleur)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Kleur)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Lengte)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Lengte)
+                </dd>
+
+                <dt>
+                    @Html.DisplayNameFor(model => model.Status)
+                </dt>
+
+                <dd>
+                    @Html.DisplayFor(model => model.Status)
+                </dd>
+
+            </dl>
+
+            @using (Html.BeginForm())
+            {
+                @Html.AntiForgeryToken()
+
+                <div class="form-actions no-color">
+                    <input type="submit" value="Delete" class="btn btn-default" /> |
+                    @Html.ActionLink("Back to List", "Index", "ParentFish")
+                </div>
+            }
+        </div>
+    }
+    else
+    {
+        <br />
+        <div>Nice try, buddy.</div>
+    }
+}
+

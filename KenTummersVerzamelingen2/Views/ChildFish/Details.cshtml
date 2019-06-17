@@ -1,0 +1,104 @@
+﻿@model KenTummersVerzamelingen2.Models.ChildFish
+@using Microsoft.AspNet.Identity
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>ChildFish</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ParentFish.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ParentFish.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Categorie)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Categorie)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Beschrijving)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Beschrijving)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Waarde)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Waarde)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Prijs)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Prijs)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Gewicht)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Gewicht)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Kleur)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Kleur)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lengte)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lengte)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Status)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Status)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @{
+        if (User.Identity.GetUserName() == "ken.tummers@hotmail.nl" || User.Identity.GetUserName() == "Admin@admin.com")
+        {
+            @Html.ActionLink("Edit", "Edit", new { id = Model.ID })
+        }
+    }
+    @Html.ActionLink("Back to List", "Index", "ParentFish")
+</p>
